@@ -1,24 +1,22 @@
-# README
+# GAMEfeeling
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ゲームの感想を投稿するサイト
 
-Things you may want to cover:
+### サイトテーマ
+あなたのゲーム体験を発信しませんか？
 
-* Ruby version
+### テーマを選んだ理由
+自分がゲームを購入するか迷った際に、レビューサイトの評価を見て購入するのではなく、純粋な他の人のプレイ感想を見て、購入の吟味をしたいと思ったため
 
-* System dependencies
+### ターゲットユーザ
+新しいゲームを購入したいが、何を買うか迷っているユーザ、自分のプレイしたゲームの感想を発信したいユーザ
 
-* Configuration
+### 主な利用シーン
+自分のプレイしたゲームの感想を発信できる、他の人のゲームの感想を閲覧できる
 
-* Database creation
+## 設計書
 
-* Database initialization
+### 機能一覧
+<https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
