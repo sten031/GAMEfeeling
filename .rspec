@@ -1,0 +1,4 @@
+--color
+--require spec_helper
+#以下を追記しておくとテスト結果が読みやすい形式で出力される。
+--format documentation
