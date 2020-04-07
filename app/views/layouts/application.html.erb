@@ -8,32 +8,35 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-
-        <nav class="nav navbar-nav navbar-left">
-          <span>GAMEfeeling</span>
-        </nav>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <!--if文でサインインとアウト時の表示を変更-->
-            <% if user_signed_in? %>
-            <li><%#= link_to ' Home', user_path(current_user), class: 'glyphicon glyphicon-home home' %></li>
-            <li><%#= link_to ' Users', users_path, class: 'glyphicon glyphicon-user users' %></li>
-            <li><%#= link_to ' Games', games_path, class: 'glyphicon glyphicon-game games' %></li>
-            <li><%= link_to ' logout', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
-            <% else %>
-            <li><%= link_to ' Home', root_path, class: 'glyphicon glyphicon-home home' %></li>
-            <li><%= link_to ' About', home_about_path, class: 'glyphicon glyphicon-link about' %></li>
-            <li><%= link_to ' sign up', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
-            <li><%= link_to ' login', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %></li>
-            <% end %>
-          </ul>
-        </nav>
-
-      </div>
-    </header>
   <body>
+
+    <header class="navbar navbar-default">
+
+      <div class="container">
+        <div class="nav navbar-nav navbar-left">
+          <%= link_to "GAMEfeeling", root_path, class: "btn title" %>
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+                 <li> <%#= link_to "マイページ", user_path(current_user.id), class: "btn btn-default btn-block" %> </li>
+                 <li> <%#= link_to "商品一覧", items_path, class: "btn btn-default btn-block" %> </li>
+                 <li> <%#= link_to "カート", cart_items_path, class: "btn btn-default btn-block" %> </li>
+                 <li> <%= link_to "ログアウト", destroy_user_session_path,method: :delete, class: "btn btn-default btn-block" %> </li>
+              <% else %>
+                 <li> <%#= link_to "商品一覧", items_path, class: "btn btn-default btn-block" %> </li>
+                 <li> <%#= link_to "新規登録", new_user_registration_path, class: "btn btn-default btn-block" %> </li>
+                 <li> <%= link_to "ログイン", user_session_path, class: "btn btn-default btn-block" %> </li>
+                 <li> <%#= link_to "管理者はこちら", admin_session_path, class: "" %> </li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+
+    </header>
+    <div class="container">
+      <div class="row">
     <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
