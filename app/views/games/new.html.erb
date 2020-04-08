@@ -1,0 +1,22 @@
+<div class="col-xs-12">
+<%= form_with model: @game, url: games_path,  local: true do |f| %>
+  <div class="field row">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "col-xs-12 game_title" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.attachment_field :image, class: "game_image" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :feeling %> <!-- ここを変更 -->
+    <%= f.text_area :feeling, class: "col-xs-12 game_feeling" %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit class: "btn btn-primary col-xs-12" %>
+  </div>
+<% end %>
+</div>
