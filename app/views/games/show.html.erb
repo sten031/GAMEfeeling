@@ -1,0 +1,7 @@
+<div class="col-xs-12">
+  <%= attachment_image_tag(@game.user, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+  <%= @game.user.name %>
+  <%= @game.title %>
+  <%= @game.feeling %>
+  <%= attachment_image_tag(@game, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+</div>
