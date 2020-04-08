@@ -1,0 +1,10 @@
+<div class=col-xs-12>
+  <% @users.each do |user| %>
+  <table class="table">
+    <tr>
+      <td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
+      <td><%= user.name %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>
