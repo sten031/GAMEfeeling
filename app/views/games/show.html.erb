@@ -4,4 +4,47 @@
   <%= @game.title %>
   <%= @game.feeling %>
   <%= attachment_image_tag(@game, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+  <% if @game.favorited_by?(current_user) %>
+    <%= link_to game_favorites_path(@game,redirect_id: 0), method: :delete do %>
+    <span class="glyphicon glyphicon-heart-empty">
+      <%= @game.favorites.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to game_favorites_path(@game,
+    redirect_id: 0), method: :post do %>
+    <span class="glyphicon glyphicon-heart-empty"><%= @game.favorites.count %></span>
+    <% end %>
+  <% end %>
+
+  <td>コメント数：<%= @game.game_comments.count %></td>
+          <% if @game.user == current_user %>
+          <td><%= link_to "Edit",edit_game_path(@game), class: "btn-sm btn-success edit_game_#{@game.id}" %></td>
+          <td><%= link_to "Destroy",@game, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_game_#{@game.id}" %></td>
+        </tr>
+        <% end %>
+      </table>
+      <table class="show-tb">
+        <% @game_comments.each do |game_comment| %>
+        <tr>
+          <td>
+            <%= link_to user_path(game_comment.user), class: "user_#{game_comment.user.id}" do %>
+              <%= attachment_image_tag game_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
+            <%= game_comment.user.name %>
+          <% end %>
+          </td>
+          <td><%= game_comment.comment %></td>
+          <% unless current_user != game_comment.user %>
+            <td>
+              <%= link_to 'Destroy',game_game_comments_path(game_comment.id),class: 'btn-sm btn-davger', method: :delete %>
+            </td>
+            <% end %>
+        </tr>
+        <% end %>
+      </table>
+      <div class="comment-form">
+        <%= form_for [@game, @game_comment] do |f| %>
+          <%= f.text_area :comment, size: "90x5" %>
+          <%= f.submit '送信' %>
+        <% end %>
+      </div>
 </div>
