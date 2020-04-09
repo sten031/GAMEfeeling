@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :image, destroy: false
   has_many :games
+  has_many :favorites
 end
