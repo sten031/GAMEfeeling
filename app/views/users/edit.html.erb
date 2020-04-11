@@ -17,5 +17,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-
 <% end %>
+<%= link_to '退会',leave_path(@user), class: "col-xs-3 btn btn-default edit_user_#{@user.id}" %>
