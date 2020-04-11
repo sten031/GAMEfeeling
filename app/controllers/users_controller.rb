@@ -13,10 +13,16 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user)
   end
+  def leave
+    @user = User.find(params[:id])
+  end
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
   end
   private
-  def user_params#アクション名、メソッド
+  def user_params
     params.require(:user).permit(:name, :introduction, :image)
   end
 end
