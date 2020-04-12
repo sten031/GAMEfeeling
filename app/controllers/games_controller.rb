@@ -37,6 +37,6 @@ class GamesController < ApplicationController
   end
   private
   def game_params #アクション名、メソッド
-    params.require(:game).permit(:title, :image, :feeling)
+    params.require(:game).permit(:title, :image, :feeling, :genre)
   end
 end
