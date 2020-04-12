@@ -35,7 +35,6 @@ class GamesController < ApplicationController
     @game.destroy
     redirect_to games_path
   end
-
   private
   def game_params #アクション名、メソッド
     params.require(:game).permit(:title, :image, :feeling)
