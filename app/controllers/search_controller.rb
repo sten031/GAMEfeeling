@@ -7,7 +7,7 @@ class SearchController < ApplicationController
   end
 
   private
-  # 完全一致
+  #検索フォーム完全一致
   def match(model, content)
     if model == 'user'
       User.where(name: content)
@@ -15,27 +15,24 @@ class SearchController < ApplicationController
       Game.where(title: content)
     end
   end
-
+  #検索フォーム前方一致
   def forward(model, content)
-    # 前方一致
     if model == 'user'
       User.where("name LIKE ?", "#{content}%")
     elsif model == 'game'
       Game.where("title LIKE ?", "#{content}%")
     end
   end
-
+  #検索フォーム後方一致
   def backward(model, content)
-    # 後方一致
     if model == 'user'
       User.where("name LIKE ?", "%#{content}")
     elsif model == 'game'
       Game.where("title LIKE ?", "%#{content}")
     end
   end
-
+  #検索フォーム部分一致
   def partical(model, content)
-    # 部分一致
     if model == 'user'
       User.where("name LIKE ?", "%#{content}%")
     elsif model == 'game'
