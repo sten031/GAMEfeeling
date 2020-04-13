@@ -1,18 +1,18 @@
 <div class="col-xs-12">
   <%= form_with model: @game, url: game_path,  local: true do |f| %>
     <table>
-        <tr>
-          <th><%= f.label :title ,""%></th>
-          <td><%= f.text_field :title, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :feeling ,""%></th>
-          <td><%= f.text_area :feeling, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <th><%= image_tag 'no_image.jpg', id: "game-image", :size => '200x200' %></th>
-          <td><%= f.attachment_field :image %></td>
-        </tr>
+      <tr>
+        <th><%= f.label :title ,""%></th>
+        <td><%= f.text_field :title, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :feeling ,""%></th>
+        <td><%= f.text_area :feeling, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= image_tag 'no_image.jpg', id: "game-image", :size => '200x200' %></th>
+        <td><%= f.attachment_field :image %></td>
+      </tr>
     </table>
     <h1><%= f.submit '変更を保存', class: "btn btn-primary" %></h1>
   <% end %>

@@ -4,16 +4,9 @@
   <%= game.user.name %>
   <%= game.title %>
   <%= attachment_image_tag(game, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
-  <% if game.favorited_by?(current_user) %>
-    <%= link_to game_favorites_path(game,
-      redirect_id: 0), method: :delete do %>
-    <span class="glyphicon glyphicon-heart"><%= game.favorites.count %></span>
-  <% end %>
-<% else %>
-  <%= link_to game_favorites_path(game, redirect_id: 0),method: :post do %>
-  <span class="glyphicon glyphicon-heart-empty"><%= game.favorites.count %></span>
-    <% end %>
-  <% end %>
+<div id="favorites_buttons_<%= game.id %>">
+  <%= render partial: 'favorites/favorites', locals: { game: game} %>
+</div>
     <p>コメント数：<%= game.game_comments.count %></p>
   <% end %>
 </div>
