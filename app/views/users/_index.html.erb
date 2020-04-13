@@ -1,8 +1,7 @@
-<h1>ユーザー一覧</h1>
 <div class=col-xs-12>
   <table class="table">
     <tbody>
-    <% @users.each do |user| %>
+    <% users.each do |user| %>
     <tr>
       <td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "46477.jpg", :size => '70x70') %></td>
       <td><%= user.name %></td>

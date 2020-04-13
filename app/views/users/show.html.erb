@@ -1,11 +1,23 @@
+<% if @user == current_user %>
+<h1>マイページ</h1>
+<% else %>
+<h1>ユーザー詳細</h1>
+<% end %>
 <div class="col-xs-12">
-  <%= attachment_image_tag(@user, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
-  <%= @user.name %>
+  <div class="col-xs-4">
+  <%= attachment_image_tag(@user, :image, :fill, 50, 50, fallback: "46477.jpg",:size => '100x100') %>
+  </div>
+  <div class="col-xs-4">
+  <h2><%= @user.name %></h2>
+  <div class="introduction">
   <%= @user.introduction %>
+  </div>
+  </div>
+  <div class="col-xs-4">
   <tr>
     <th>フォロー中</th>
     <th><%= link_to @user.follower.count, user_follows_path(@user) %></th>
-  </tr>
+  </tr><br>
   <tr>
     <th>フォロワー</th>
     <th><%= link_to @user.followed.count, user_followers_path(@user) %></th>
@@ -19,7 +31,8 @@
   <% end %>
   <% if @user == current_user %>
     <div class="row">
-      <%= link_to 'プロフィール編集',edit_user_path(@user), class: "col-xs-3 btn btn-default edit_user_#{@user.id}" %>
+      <%= link_to 'プロフィール編集',edit_user_path(@user), class: "btn btn-default edit_user_#{@user.id}" %>
     </div>
   <% end %>
+  </div>
 </div>
