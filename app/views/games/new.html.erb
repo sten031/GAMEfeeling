@@ -1,24 +1,24 @@
 <div class="col-xs-12">
 <%= form_with model: @game, url: games_path,  local: true do |f| %>
-  <div class="field row">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "col-xs-12 game_title" %>
+  <div class="field field col-xs-8 col-xs-offset-4">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "col-xs-6 game_title" %>
   </div>
 
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.attachment_field :image, class: "game_image" %>
+  <div class="field field col-xs-8 col-xs-offset-4">
+    <%= f.label :image %><br>
+    <%= f.attachment_field :image, class: "col-xs-6 game_image" %>
   </div>
 
-  <div class="field row">
-    <%= f.label :feeling %> <!-- ここを変更 -->
-    <%= f.text_area :feeling, class: "col-xs-12 game_feeling" %>
+  <div class="field field col-xs-8 col-xs-offset-4">
+    <%= f.label :feeling %><br>
+    <%= f.text_area :feeling, class: "col-xs-6 game_feeling" %>
   </div>
-
+  <div class="field field col-xs-8 col-xs-offset-4">
   <%= f.select :genre, [["その他"], ["アクション"], ["シューティング"], ["アドベンチャー"], ["ロールプレイング"], ["パズル"], ["レースゲーム"], ["シミュレーション"], ["リズムゲーム"], ["スポーツ"]] %>
-
-  <div class="actions row">
-    <%= f.submit class: "btn btn-primary col-xs-12" %>
+  </div>
+  <div class="actions col-xs-8 col-xs-offset-4">
+    <%= f.submit class: "btn btn-primary col-xs-6" %>
   </div>
 <% end %>
 </div>

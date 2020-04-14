@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_135730) do
+ActiveRecord::Schema.define(version: 2020_04_14_120715) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "game_id"
+    t.integer "user_id", null: false
+    t.integer "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_favorites_on_game_id"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2020_04_12_135730) do
   end
 
   create_table "game_comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "game_id"
-    t.text "comment"
+    t.integer "user_id", null: false
+    t.integer "game_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_game_comments_on_game_id"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2020_04_12_135730) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title"
-    t.text "feeling"
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.text "feeling", null: false
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_135730) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "introduction"
