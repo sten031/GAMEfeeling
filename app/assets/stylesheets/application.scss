@@ -17,9 +17,13 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
+html{
+  height:100%;
+}
+
 body {
   background-color: #B8E6B4;
-  margin-bottom:200px;
+  height:100%;
 }
 
 .head {
@@ -36,5 +40,65 @@ body {
 footer {
   margin-top: auto;
   background-color: #FFFFFE;
-  height: 60px;
+  height: 100px;
+}
+
+#container {
+  height: 500px;
+ }
+
+#container-about {
+  height: 300px;
+  width: 400px;
+ }
+
+.top1 {
+  background-image: url(gaming.jpg);
+}
+
+.top2 {
+  background-image: url(famicon.jpg);
+}
+
+.top3 {
+  background-image: url(n-s.jpg);
+}
+
+.top4 {
+  background-image: url(fortnite.jpg);
+}
+
+.about1 {
+  background-image: url(game1.jpg);
+}
+
+.about2 {
+  background-image: url(game2.jpg);
+}
+
+.about3 {
+  background-image: url(game3.jpg);
+}
+
+.about4 {
+  background-image: url(game4.jpg);
+}
+
+.text {
+  text-align: center;
+}
+
+.slideimag {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+.field {
+  height: 200px;
+}
+
+.about-strong {
+  padding-top:100px;
+  text-align: center;
 }
