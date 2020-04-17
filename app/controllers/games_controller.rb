@@ -6,8 +6,12 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.user_id = current_user.id
-    @game.save
-    redirect_to games_path(@game.id)
+    if @game.save
+      redirect_to games_path(@game.id)
+    else
+      @game.user_id = current_user.id
+      render 'new'
+    end
   end
 
   def index
@@ -26,8 +30,11 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(game_params)
-    redirect_to game_path(@game)
+    if @game.update(game_params)
+      redirect_to game_path(@game)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

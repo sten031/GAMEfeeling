@@ -3,8 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable
   attachment :image, destroy: false
+
   has_many :games
   has_many :favorites
+
+  validates :name, presence: true
+  validates :introduction, length: { maximum: 200 }
+
+  #フォローフォロワーの処理
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy#フォロー取得
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy#フォロワー取得
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
