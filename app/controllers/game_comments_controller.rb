@@ -4,8 +4,12 @@ class GameCommentsController < ApplicationController
     @game_new = Game.new
     @game_comment = @game.game_comments.new(game_comment_params)
     @game_comment.user_id = current_user.id
-    @game_comment.save
-    redirect_to game_path(@game)
+      if @game_comment.save
+       redirect_to game_path(@game)
+      else
+        @game_comments = GameComment.where(game_id: @game.id)
+        render '/games/show'
+      end
   end
 
   def destroy

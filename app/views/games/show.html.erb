@@ -1,8 +1,9 @@
 <h1>投稿詳細</h1>
 <div class="col-xs-12 base">
+
   <div class="col-xs-4">
-  <h2><%= @game.user.name %></h2>
-  <%= attachment_image_tag(@game.user, :image, :fill, 50, 50, fallback: "46477.jpg",:size => '70x70') %>
+    <h2><%= @game.user.name %></h2>
+    <%= attachment_image_tag(@game.user, :image, :fill, 50, 50, fallback: "46477.jpg",:size => '70x70') %>
   </div>
 
   <div class="col-xs-4">
@@ -31,7 +32,8 @@
   <div class="col-xs-4">
     <div class="comment-form">
       <%= form_for [@game, @game_comment] do |f| %>
-        <%= f.text_area :comment, size: "50x5" %>
+        <%= render 'layouts/errors', model: f.object %>
+        <%= f.text_area :comment, size: "50x4" %>
         <%= f.submit 'コメントする', class: "btn btn-default" %>
       <% end %>
     </div>
@@ -40,7 +42,6 @@
     <div class="col-xs-12">
         <div class="col-xs-3">
           <p><%= game_comment.user.name %></p><br>
-          <p><%= attachment_image_tag game_comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg", size: "70x70" %></p>
         </div>
         <div class="col-xs-6">
         <p><%= game_comment.comment %></p>
@@ -53,3 +54,5 @@
     </div>
     <% end %>
   </div>
+
+</div>
