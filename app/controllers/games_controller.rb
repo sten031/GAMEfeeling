@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :screen_user, only: [:edit, :update]
   def new
     @game = Game.new
   end
@@ -45,5 +47,11 @@ class GamesController < ApplicationController
   private
   def game_params #アクション名、メソッド
     params.require(:game).permit(:title, :image, :feeling, :genre)
+  end
+
+  def screen_user
+    unless params[:id].to_i == current_user.id
+      redirect_to games_path
+    end
   end
 end
