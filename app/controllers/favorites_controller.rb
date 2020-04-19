@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-    def create
+  def create
     @game = Game.find(params[:game_id])
     favorite = @game.favorites.new(user_id: current_user.id)
     favorite.save
@@ -22,4 +22,5 @@ class FavoritesController < ApplicationController
       redirect_to game_path(@game)
     end
   end
+
 end

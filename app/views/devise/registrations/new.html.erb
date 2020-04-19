@@ -4,18 +4,18 @@
   <%= devise_error_messages! %>
 
   <!--name表示の追加-->
-  <div class="field">
+  <div class="">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, class: "name" %>
   </div>
   <!--name表示の追加-->
 
-  <div class="field">
+  <div class="">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, class: "email" %>
   </div>
 
-  <div class="field">
+  <div class="">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -24,7 +24,7 @@
   </div>
 
 <!--パスワード確認入力フォーム-->
-  <div class="field">
+  <div class="">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "password_confirm" %>
   </div>

@@ -1,39 +1,54 @@
 <% if @user == current_user %>
-<h1>マイページ</h1>
+  <h1>マイページ</h1>
 <% else %>
-<h1>ユーザー詳細</h1>
+  <h1>ユーザー詳細</h1>
 <% end %>
 
-<div class="col-xs-12 base">
+<div class="col-xs-12 base show-padding">
+
   <div class="col-xs-4">
-  <%= attachment_image_tag(@user, :image, :fill, 50, 50, fallback: "46477.jpg",:size => '100x100') %>
+    <%= attachment_image_tag(@user, :image, fallback: "46477.jpg",:size => '150x150') %>
   </div>
+
   <div class="col-xs-4">
-  <h2><%= @user.name %></h2>
-  <div class="introduction">
-  <%= @user.introduction %>
+    <h2><%= @user.name %></h2>
+    <div class="introduction">
+      <h2>自己紹介</h2>
+    </div>
+    <div class="introduction">
+      <%= @user.introduction %>
+    </div>
   </div>
-  </div>
+
   <div class="col-xs-4">
-  <tr>
-    <th>フォロー中</th>
-    <th><%= link_to @user.follower.count, user_follows_path(@user) %></th>
-  </tr><br>
-  <tr>
-    <th>フォロワー</th>
-    <th><%= link_to @user.followed.count, user_followers_path(@user) %></th>
-  </tr>
-  <% if current_user != @user %>
-    <% if current_user.following?(@user) %>
-      <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %>
+    <table class="table introduction">
+      <tbody>
+        <tr>
+          <th>フォロー中</th>
+          <th><%= link_to @user.follower.count, user_follows_path(@user) %></th>
+        </tr><br>
+        <tr>
+          <th>フォロワー</th>
+          <th><%= link_to @user.followed.count, user_followers_path(@user) %></th>
+        </tr>
+      </tbody>
+    </table>
+    <% if current_user != @user %>
+      <% if current_user.following?(@user) %>
+      <div class="show-edit">
+        <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+      </div>
+      <% else %>
+      <div class="show-edit">
+        <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %>
+      </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <% if @user == current_user %>
-    <div class="row">
+    <% if @user == current_user %>
+    <div class="show-edit">
       <%= link_to 'プロフィール編集',edit_user_path(@user), class: "btn btn-default edit_user_#{@user.id}" %>
     </div>
-  <% end %>
+    <% end %>
   </div>
+
 </div>

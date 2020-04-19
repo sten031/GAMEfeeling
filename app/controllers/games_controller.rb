@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :authenticate_user!
-  before_action :screen_user, only: [:edit, :update]
+
   def new
     @game = Game.new
   end
@@ -22,6 +22,7 @@ class GamesController < ApplicationController
 
   def edit
     @game = Game.find(params[:id])
+    screen_game(@game)
   end
 
   def show
@@ -44,14 +45,16 @@ class GamesController < ApplicationController
     @game.destroy
     redirect_to games_path
   end
+
   private
   def game_params #アクション名、メソッド
     params.require(:game).permit(:title, :image, :feeling, :genre)
   end
 
-  def screen_user
-    unless params[:id].to_i == current_user.id
-      redirect_to games_path
+  def screen_game(game)
+    if game.user.id != current_user.id
+      redirect_to game_path
     end
   end
+
 end

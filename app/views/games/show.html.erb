@@ -1,34 +1,29 @@
 <h1>投稿詳細</h1>
-<div class="col-xs-12 base">
+<div class="col-xs-12 base show-padding">
 
-  <div class="col-xs-4">
+  <div class="col-xs-3">
     <h2><%= @game.user.name %></h2>
-    <%= attachment_image_tag(@game.user, :image, :fill, 50, 50, fallback: "46477.jpg",:size => '70x70') %>
+    <%= attachment_image_tag(@game.user, :image, fallback: "46477.jpg",:size => '70x70') %>
   </div>
 
-  <div class="col-xs-4">
-    <h2>タイトル</h2>
-    <h3><%= @game.title %></h3>
-    <p>カテゴリ: <%= @game.genre %></p>
+  <div class="col-xs-5">
+    <h2></h2>
+    <h3>タイトル：<%= @game.title %></h3>
+    <p>カテゴリ：<%= @game.genre %></p>
     <h2>感想</h2>
     <p><%= @game.feeling %></p>
-    <%= attachment_image_tag(@game, :image, :fill, 50, 50, fallback: "no-image-mini.jpg",:size => '200x200') %>
+    <%= attachment_image_tag(@game, :image, fallback: "no-image-mini.jpg",:size => '200x200') %>
     <div id="favorites_buttons_<%= @game.id %>">
       <%= render partial: 'favorites/favorites', locals: { game: @game} %>
     </div>
-    <tr>
-      <td>コメント数：<%= @game.game_comments.count %></td>
-      <% if @game.user == current_user %>
-      <td>
-        <%= link_to "Edit",edit_game_path(@game), class: "btn-sm btn-success edit_game_#{@game.id}" %>
-      </td>
-      <td>
-        <%= link_to "Destroy",@game, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_game_#{@game.id}" %>
-      </td>
-    </tr>
-      <% end %>
+    <p>コメント数：<%= @game.game_comments.count %></p>
+    <% if @game.user == current_user %>
+      <%= link_to "Edit",edit_game_path(@game), class: "btn-sm btn-success edit_game_#{@game.id}" %>
+      <%= link_to "Destroy",@game, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_game_#{@game.id}" %>
+    <% end %>
   </div>
 
+  <!--コメント機能-->
   <div class="col-xs-4">
     <div class="comment-form">
       <%= form_for [@game, @game_comment] do |f| %>
@@ -40,17 +35,17 @@
     <h3>コメント一覧</h3>
     <% @game_comments.each do |game_comment| %>
     <div class="col-xs-12">
-        <div class="col-xs-3">
-          <p><%= game_comment.user.name %></p><br>
-        </div>
-        <div class="col-xs-6">
+      <div class="col-xs-3">
+        <p><%= game_comment.user.name %></p><br>
+      </div>
+      <div class="col-xs-6">
         <p><%= game_comment.comment %></p>
-        </div>
-        <div class="col-xs-3">
+      </div>
+      <div class="col-xs-3">
         <% unless current_user != game_comment.user %>
           <%= link_to '削除',game_game_comments_path(game_comment.id),class: 'btn-sm btn-default', method: :delete %>
         <% end %>
-        </div>
+      </div>
     </div>
     <% end %>
   </div>

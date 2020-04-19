@@ -4,7 +4,7 @@ class Game < ApplicationRecord
   has_many :favorites
 
   attachment :image, destroy: false
-  enum genre:[:その他,:アクション,:シューティング,:アドベンチャー,:ロールプレイング,:パズル,:レースゲーム,:シュミレーション,:リズムゲーム,:スポーツ]
+  enum genre:[:その他,:アクション,:シューティング,:アドベンチャー,:ロールプレイング,:パズル,:レースゲーム,:シミュレーション,:リズムゲーム,:スポーツ]
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :feeling, presence: true, length: { maximum: 200 }

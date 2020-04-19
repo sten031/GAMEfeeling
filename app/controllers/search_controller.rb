@@ -15,6 +15,7 @@ class SearchController < ApplicationController
       Game.where(title: content)
     end
   end
+
   #検索フォーム前方一致
   def forward(model, content)
     if model == 'user'
@@ -23,6 +24,7 @@ class SearchController < ApplicationController
       Game.where("title LIKE ?", "#{content}%")
     end
   end
+
   #検索フォーム後方一致
   def backward(model, content)
     if model == 'user'
@@ -31,6 +33,7 @@ class SearchController < ApplicationController
       Game.where("title LIKE ?", "%#{content}")
     end
   end
+
   #検索フォーム部分一致
   def partical(model, content)
     if model == 'user'
@@ -52,4 +55,5 @@ class SearchController < ApplicationController
       partical(model, content)
     end
   end
+
 end
