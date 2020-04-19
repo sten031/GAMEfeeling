@@ -1,6 +1,8 @@
 <h2>フォロー一覧</h2>
-<% if @users.count > 0 %>
-  <%= render '/users/index', users: @users %>
-<% else %>
-  <p>まだフォローしているユーザーはいません</p>
-<% end %>
+  <% if @users.count > 0 %>
+    <%= render '/users/index', users: @users %>
+  <% else %>
+  <div class="col-xs-12 base f-f">
+    <p>まだフォローしているユーザーはいません</p>
+  </div>
+  <% end %>

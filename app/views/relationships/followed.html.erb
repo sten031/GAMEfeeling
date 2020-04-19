@@ -1,6 +1,8 @@
 <h2>フォロワー一覧</h2>
-<% if @users.count > 0 %>
-  <%= render '/users/index', users: @users %>
-<% else %>
-  <p>まだフォロワーはいません</p>
-<% end %>
+  <% if @users.count > 0 %>
+    <%= render '/users/index', users: @users %>
+  <% else %>
+  <div class="col-xs-12 base f-f">
+    <p>まだフォロワーはいません</p>
+  </div>
+  <% end %>

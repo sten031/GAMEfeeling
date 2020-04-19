@@ -1,45 +1,53 @@
 <% if @model == 'user' %>
-  <div class="col-xs-9">
-      <h2>Users search for '<%= @content %>'</h2>
-      <table class="table">
-        <thead>
+  <h1>'<%= @content %>'の検索結果です</h1>
+  <div class="col-xs-12 base index-user-padding">
+    <table class="table">
+      <tbody>
+        <% @datas.each do |user| %>
           <tr>
-            <th>image</th>
-            <th>name</th>
-            <th colspan="3"></th>
+            <td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "46477.jpg", :size => '150x150') %></td>
+            <td><%= user.name %></td>
+            <td>フォロー数：<%= user.follower.count %></td>
+            <td>フォロワー数：<%= user.followed.count %></td>
+            <td>
+              <% if current_user != user %>
+                <% if current_user.following?(user) %>
+                  <%= link_to 'フォロー解除', user_relationships_path(user.id), method: :delete , class: "btn btn-default"%>
+                <% else %>
+                  <%= link_to 'フォローする', user_relationships_path(user.id),method: :POST , class: "btn btn-default"%>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= link_to "詳細へ", user, class: "btn btn-default user_#{user.id}" %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @datas.each do |f| %>
-          <tr>
-            <td><%= attachment_image_tag(f, :image, size: "50x50", fallback: "no_image.jpg") %></td>
-            <td><%= f.name %></td>
-            <td><%= link_to "Show", user_path(f.id) %></td>
-          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  </div>
+<% else %>
+  <h1>'<%= @content %>'の検索結果です</h1>
+  <div class="col-xs-12 base index-padding">
+    <% @datas.each do |game| %>
+      <div class="col-xs-3">
+        <%= attachment_image_tag(game, :image, :fill, 50, 50, fallback: "no-image-mini.jpg", :size => '200x200') %>
+        <p>
+          タイトル：
+          <%= link_to(game) do %>
+          <%= game.title %>
+        </p>
           <% end %>
-        </tbody>
-      </table>
-    </div>
- <% else %>
-<div class="col-xs-9">
-      <h2>Games search for '<%= @content %>'</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>title</th>
-            <th>Opinion</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @datas.each do |f| %>
-          <tr>
-            <td><%= f.title %></td>
-            <td><%= f.feeling %></td>
-            <td><%= link_to "詳細", game_path(f.id) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <p>
+          ジャンル：
+          <%= game.genre %>
+        </p>
+        <div id="favorites_buttons_<%= game.id %>">
+          <%= render partial: 'favorites/favorites', locals: { game: game} %>
+        </div>
+        <p>
+          コメント数：
+          <%= game.game_comments.count %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 <% end %>

@@ -1,5 +1,6 @@
 class GameCommentsController < ApplicationController
   before_action :authenticate_user!
+
   def create
     @game = Game.find(params[:game_id])
     @game_new = Game.new
@@ -24,4 +25,5 @@ class GameCommentsController < ApplicationController
   def game_comment_params
     params.require(:game_comment).permit(:comment)
   end
+
 end

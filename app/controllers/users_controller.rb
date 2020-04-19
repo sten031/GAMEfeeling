@@ -39,8 +39,9 @@ class UsersController < ApplicationController
   end
 
   def screen_user
-      unless params[:id].to_i == current_user.id
-        redirect_to user_path(current_user)
-      end
+    if params[:id].to_i != current_user.id
+      redirect_to user_path(current_user)
+    end
   end
+
 end

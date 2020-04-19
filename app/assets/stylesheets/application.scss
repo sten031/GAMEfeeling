@@ -41,6 +41,17 @@ footer {
   margin-top: auto;
   background-color: #FFFFFE;
   height: 100px;
+  bottom:0;
+}
+
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+#back img {
+  width: 50px;
 }
 
 #container {
@@ -50,7 +61,12 @@ footer {
 #container-about {
   height: 300px;
   width: 400px;
- }
+}
+
+.top-padding{
+  padding-bottom:60px;
+  margin-bottom:40px;
+}
 
 .top1 {
   background-image: url(gaming.jpg);
@@ -66,6 +82,12 @@ footer {
 
 .top4 {
   background-image: url(fortnite.jpg);
+}
+
+.about {
+  font-family: 50px;
+  color:black;
+  padding-left:130px;
 }
 
 .about1 {
@@ -101,4 +123,42 @@ footer {
 .about-strong {
   padding-top:100px;
   text-align: center;
+}
+
+.form-margin {
+  margin:10px 0px 20px;
+}
+
+.leave-padding{
+  padding:100px 0px;
+}
+
+.index-padding {
+  padding-bottom:150px;
+  margin-bottom:40px;
+}
+
+.index-user-padding {
+  padding-bottom:150px;
+  margin:80px 0px;
+}
+
+.new-padding, .edit-padding {
+  padding:70px 0px;
+}
+
+.show-padding{
+  padding-bottom:40px;
+}
+
+.show-edit {
+  padding-top:250px;
+}
+
+.introduction {
+  margin-top:80px;
+}
+
+.f-f {
+  padding-bottom:450px;
 }
