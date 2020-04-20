@@ -69,3 +69,4 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 gem 'factory_bot_rails'
+gem 'kaminari'

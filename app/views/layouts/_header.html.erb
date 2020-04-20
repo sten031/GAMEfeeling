@@ -3,7 +3,7 @@
 
     <div class="nav navbar-nav navbar-left">
       <%= link_to root_path do%>
-      <%= image_tag 'icon.jpg',:size => '200x80' %>
+        <%= image_tag 'icon.jpg',:size => '200x80' %>
       <% end %>
     </div>
 
@@ -14,7 +14,7 @@
           <%= select_tag 'search[model]', options_for_select({ "ユーザー" => "user", "タイトル" => "game" }) %>
           <%= select_tag 'search[how]', options_for_select({ "部分一致" => "partical", "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward"}) %>
           <span class="text_btn">
-            <%= submit_tag '検索', class: "btn search_btn" %>
+            <%= submit_tag '検索', class: "btn btn-default search_btn" %>
           </span>
         <% end %>
       </span>
