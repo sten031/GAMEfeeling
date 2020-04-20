@@ -7,7 +7,7 @@ RSpec.describe GameComment, type: :model do
   end
 
   it "コメントが201文字以上の場合、無効である" do
-    game_comment = FactoryBot.build(:game_comment, comment: "t" * 201 )
+    game_comment = FactoryBot.build(:game_comment, comment: "t" * 201)
     expect(game_comment.invalid?).to be true
   end
 end

@@ -48,7 +48,8 @@ class GamesController < ApplicationController
   end
 
   private
-  def game_params #アクション名、メソッド
+
+  def game_params # アクション名、メソッド
     params.require(:game).permit(:title, :image, :feeling, :genre)
   end
 
@@ -57,5 +58,4 @@ class GamesController < ApplicationController
       redirect_to game_path
     end
   end
-
 end
