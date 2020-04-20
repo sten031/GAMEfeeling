@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :screen_user, only: [:edit, :update, :leave]
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :desc)
+    @users = User.all.page(params[:page]).per(6)
   end
 
   def show

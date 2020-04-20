@@ -7,7 +7,7 @@
 <div class="col-xs-12 base show-padding">
 
   <div class="col-xs-4">
-    <%= attachment_image_tag(@user, :image, fallback: "46477.jpg",:size => '150x150') %>
+    <%= attachment_image_tag(@user, :image, fallback: "46477.jpg",:size => '250x250') %>
   </div>
 
   <div class="col-xs-4">
@@ -36,17 +36,17 @@
     <% if current_user != @user %>
       <% if current_user.following?(@user) %>
       <div class="show-edit">
-        <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+        <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-danger" %>
       </div>
       <% else %>
       <div class="show-edit">
-        <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %>
+        <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-primary" %>
       </div>
       <% end %>
     <% end %>
     <% if @user == current_user %>
     <div class="show-edit">
-      <%= link_to 'プロフィール編集',edit_user_path(@user), class: "btn btn-default edit_user_#{@user.id}" %>
+      <%= link_to 'プロフィール編集',edit_user_path(@user), class: "btn btn-primary edit_user_#{@user.id}" %>
     </div>
     <% end %>
   </div>

@@ -17,7 +17,8 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
+    @games = Game.all.order(created_at: :desc)
+    @games = Game.all.page(params[:page]).per(8)
   end
 
   def edit

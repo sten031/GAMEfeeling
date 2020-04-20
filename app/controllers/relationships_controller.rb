@@ -11,12 +11,14 @@ class RelationshipsController < ApplicationController
 
   def follower
     user = User.find(params[:user_id])
-    @users = user.following_user
+    @users = user.following_user.order(created_at: :desc)
+    @users = user.following_user.page(params[:page]).per(6)
   end
 
   def followed
     user = User.find(params[:user_id])
-    @users = user.follower_user
+    @users = user.follower_user.order(created_at: :desc)
+    @users = user.follower_user.page(params[:page]).per(6)
   end
 
 end

@@ -3,7 +3,7 @@
 
   <div class="col-xs-3">
     <h2><%= @game.user.name %></h2>
-    <%= attachment_image_tag(@game.user, :image, fallback: "46477.jpg",:size => '70x70') %>
+    <%= attachment_image_tag(@game.user, :image, fallback: "46477.jpg",:size => '150x150') %>
   </div>
 
   <div class="col-xs-5">
@@ -12,7 +12,7 @@
     <p>カテゴリ：<%= @game.genre %></p>
     <h2>感想</h2>
     <p><%= @game.feeling %></p>
-    <%= attachment_image_tag(@game, :image, fallback: "no-image-mini.jpg",:size => '200x200') %>
+    <%= attachment_image_tag(@game, :image, fallback: "no-image-mini.jpg",:size => '400x400') %>
     <div id="favorites_buttons_<%= @game.id %>">
       <%= render partial: 'favorites/favorites', locals: { game: @game} %>
     </div>
@@ -29,7 +29,7 @@
       <%= form_for [@game, @game_comment] do |f| %>
         <%= render 'layouts/errors', model: f.object %>
         <%= f.text_area :comment, size: "50x4" %>
-        <%= f.submit 'コメントする', class: "btn btn-default" %>
+        <%= f.submit 'コメントする', class: "btn btn-primary" %>
       <% end %>
     </div>
     <h3>コメント一覧</h3>
@@ -43,7 +43,7 @@
       </div>
       <div class="col-xs-3">
         <% unless current_user != game_comment.user %>
-          <%= link_to '削除',game_game_comments_path(game_comment.id),class: 'btn-sm btn-default', method: :delete %>
+          <%= link_to '削除',game_game_comments_path(game_comment.id),class: 'btn-sm btn-danger', method: :delete %>
         <% end %>
       </div>
     </div>
