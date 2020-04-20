@@ -20,5 +20,4 @@ class RelationshipsController < ApplicationController
     @users = user.follower_user.order(created_at: :desc)
     @users = user.follower_user.page(params[:page]).per(6)
   end
-
 end

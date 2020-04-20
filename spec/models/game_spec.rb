@@ -19,12 +19,12 @@ RSpec.describe Game, type: :model do
   end
 
   it "タイトルが51文字以上の場合、無効である" do
-    game = FactoryBot.build(:game, title: "t" * 51 )
+    game = FactoryBot.build(:game, title: "t" * 51)
     expect(game.invalid?).to be true
   end
 
   it "感想が201文字以上の場合、無効である" do
-    game = FactoryBot.build(:game, feeling: "t" * 201 )
+    game = FactoryBot.build(:game, feeling: "t" * 201)
     expect(game.invalid?).to be true
   end
 end
