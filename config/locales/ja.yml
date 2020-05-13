@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      game: ゲーム
+    attributes:
+      game:
+        title: タイトル
+        feeling: 感想
+        genre: ジャンル
+      game/genre:
+        other: その他
+        action: アクション
+        shooting: シューティング
+        adv: アドベンチャー
+        rpg: ロールプレイング
+        puzzle: パズル
+        race: レースゲーム
+        simulation: シミュレーション
+        rhythm: リズムゲーム
+        sports: スポーツ
